@@ -1,272 +1,360 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<base href="http://love.hunlipic.com/biaobai_aixinshu/" />
-<title>欢迎来到”杨阳“和“杨进秀”的爱情树</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=gb2312">
+	<style>
+		body{margin:0;padding:0;overflow: hidden;}
+		.city{width:100%;position:fixed;bottom: 0px;z-index: 100;}
+		.city img{width: 100%;}
+	</style>
+	<title>html5夜景放烟花绽放动画效果</title>
+</head>
+<body onselectstart = "return false">
 
-<link type="text/css" rel="stylesheet" href="css/default.css">
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/jscex.min.js"></script>
-<script type="text/javascript" src="js/jscex-parser.js"></script>
-<script type="text/javascript" src="js/jscex-jit.js"></script>
-<script type="text/javascript" src="js/jscex-builderbase.min.js"></script>
-<script type="text/javascript" src="js/jscex-async.min.js"></script>
-<script type="text/javascript" src="js/jscex-async-powerpack.min.js"></script>
-<script type="text/javascript" src="js/functions.js" charset="utf-8"></script>
-<script type="text/javascript" src="js/love.js" charset="utf-8"></script>
-<style type="text/css">
-<!--
-.STYLE1 {color: #666666}
--->
-</style></head>
-<body>
+<div style="height:700px;overflow:hidden;">
 
-<div id="main">
-<div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。</div>
-            <div id="wrap">
-                <div id="text">
-			        <div id="code">
-			        	<span class="say">亲爱的杨进秀：</span><br>
-						<span class="say"> </span><br>
-                        <span class="say">　　你的出现，占满了我的视线，我愿跟随你永远
-自从遇见你那天开始，我的心就像跌进深深的湖水，推不开躲不掉，心一直想往你身上靠
-只要你愿意，当你失落失意的时候，需要一个肩膊的时候，告诉我，我会立即出现
-之前我不相信一见钟情，但是见到你的那一刻，我否定了我的看法。我的心为你沦陷，从此只为你跳动
-有一种爱的感觉，叫感同身受。有一种爱的默契，叫心有灵犀。有一种爱的承诺，叫天长地久
-有一种爱的方式，是执子之手,与子携老
-莎士比亚说过：爱情是一种甜蜜的痛苦，但是我愿意忍受这种痛苦
-莎士比亚还说过，世界上没有比服侍爱情更快乐的了，你愿不愿意享受这种快乐？
-I LOVE YOU
+	<canvas id='cas' style="background-color:rgba(0,5,24,1);">浏览器不支持canvas</canvas>
+	<div class="city"><img src="img/city.png" alt="" /></div>
+	<img src="img/moon.png" alt="" id="moon" style="visibility: hidden;"/>
+	<div style="display:none">
+		<div class="shape">新年快乐</div>
+		<div class="shape">合家幸福</div>
+        <div class="shape">万事如意</div>
+        <div class="shape">心想事成</div>
+        <div class="shape">财源广进</div>
+	</div>
+	
+</div>
+	
+	<script>
+		var canvas = document.getElementById("cas");
+		var ocas = document.createElement("canvas");
+		var octx = ocas.getContext("2d");
+		var ctx = canvas.getContext("2d");
+		ocas.width = canvas.width = window.innerWidth;
+		ocas.height = canvas.height = 700;
+		var bigbooms = [];
+	
+		window.onload = function(){
+			initAnimate()
+		}
 
-</span><br>
+		function initAnimate(){
+			drawBg();
 
-                        <span class="say"><span class="space"></span> -- 杨阳 --</span>
-			        </div>
-                </div>
-                <div id="clock-box">
-                    杨阳<span class="STYLE1"> 与 </span>杨进秀 <span class="STYLE1">已经相爱了</span>
-                  <div id="clock"></div>
-              </div>
-                <canvas id="canvas" width="1100" height="680"></canvas>
-            </div>
-            
-        </div>
-    
-    <div class="bg1"> 
-   <div class="main"> 
-    <footer style="line-height:20px"> 
+			lastTime = new Date();
+			animate();
+		}
 
-<bgsound src="http://m701.music.126.net/20221115172940/a6b985ea95edb3249d584f3104a6c83d/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/8833291469/56e4/db62/d226/2512a06e9f6ddb222c98d245d2bd3784.mp3" loop="-1"/>
-<audio src="http://m701.music.126.net/20221115172940/a6b985ea95edb3249d584f3104a6c83d/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/8833291469/56e4/db62/d226/2512a06e9f6ddb222c98d245d2bd3784.mp3" controls autoplay='autoplay' loop="loop" id="bgmusic" style="display:none"></audio>
- <script>
-    (function() {
-        function log(info) {
-            console.log(info);
-            // alert(info);
-        }
-        function forceSafariPlayAudio() {
-            audioEl.load(); // iOS 9   还需要额外的 load 一下, 否则直接 play 无效
-            audioEl.play(); // iOS 7/8 仅需要 play 一下
-        }
-
-        var audioEl = document.getElementById('bgmusic');
-
-        audioEl.addEventListener('loadstart', function() {
-            log('loadstart');
-        }, false);
-        audioEl.addEventListener('loadeddata', function() {
-            log('loadeddata');
-        }, false);
-        audioEl.addEventListener('loadedmetadata', function() {
-            log('loadedmetadata');
-        }, false);
-        audioEl.addEventListener('canplay', function() {
-            log('canplay');
-        }, false);
-        audioEl.addEventListener('play', function() {
-            log('play');
-            // 当 audio 能够播放后, 移除这个事件
-            window.removeEventListener('touchstart', forceSafariPlayAudio, false);
-        }, false);
-        audioEl.addEventListener('playing', function() {
-            log('playing');
-        }, false);
-        audioEl.addEventListener('pause', function() {
-            log('pause');
-        }, false);
-
-        // 由于 iOS Safari 限制不允许 audio autoplay, 必须用户主动交互(例如 click)后才能播放 audio,
-        // 因此我们通过一个用户交互事件来主动 play 一下 audio.
-        window.addEventListener('touchstart', forceSafariPlayAudio, false);
-
-        audioEl.src = "http://m701.music.126.net/20221115172940/a6b985ea95edb3249d584f3104a6c83d/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/8833291469/56e4/db62/d226/2512a06e9f6ddb222c98d245d2bd3784.mp3";
-    })();
-    </script>
+		var lastTime;
+		function animate(){
+			ctx.save();
+			ctx.fillStyle = "rgba(0,5,24,0.1)";
+			ctx.fillRect(0,0,canvas.width,canvas.height);
+			ctx.restore();
 
 
-    </footer>
-   </div> 
-  </div>    
+			var newTime = new Date();
+            if(newTime-lastTime>500+(window.innerHeight-767)/2){
+				var random = Math.random()*100>2?true:false;
+				var x = getRandom(canvas.width/5 , canvas.width*4/5);
+				var y = getRandom(50 , 200);
+				if(random){
+					var bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:x , y:y});
+					bigbooms.push(bigboom)
+				}
+				else {
+					var bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:canvas.width/2 , y:200} , document.querySelectorAll(".shape")[parseInt(getRandom(0, document.querySelectorAll(".shape").length))]);
+					bigbooms.push(bigboom)
+				}
+				lastTime = newTime;
+				console.log(bigbooms)
+			}
 
-    <script>
-    (function(){
-        var canvas = $('#canvas');
-		
-        if (!canvas[0].getContext) {
-            $("#error").show();
-            return false;
-        }
+			stars.foreach(function(){
+				this.paint();
+			})
 
-        var width = canvas.width();
-        var height = canvas.height();
-        
-        canvas.attr("width", width);
-        canvas.attr("height", height);
+			drawMoon();
 
-        var opts = {
-            seed: {
-                x: width / 2 - 20,
-                color: "rgb(190, 26, 37)",
-                scale: 2
-            },
-            branch: [
-                [535, 680, 570, 250, 500, 200, 30, 100, [
-                    [540, 500, 455, 417, 340, 400, 13, 100, [
-                        [450, 435, 434, 430, 394, 395, 2, 40]
-                    ]],
-                    [550, 445, 600, 356, 680, 345, 12, 100, [
-                        [578, 400, 648, 409, 661, 426, 3, 80]
-                    ]],
-                    [539, 281, 537, 248, 534, 217, 3, 40],
-                    [546, 397, 413, 247, 328, 244, 9, 80, [
-                        [427, 286, 383, 253, 371, 205, 2, 40],
-                        [498, 345, 435, 315, 395, 330, 4, 60]
-                    ]],
-                    [546, 357, 608, 252, 678, 221, 6, 100, [
-                        [590, 293, 646, 277, 648, 271, 2, 80]
-                    ]]
-                ]] 
-            ],
-            bloom: {
-                num: 700,
-                width: 1080,
-                height: 650,
-            },
-            footer: {
-                width: 1200,
-                height: 5,
-                speed: 10,
-            }
-        }
+			bigbooms.foreach(function(index){
+				var that = this;
+				if(!this.dead){
+					this._move();
+					this._drawLight();
+				}
+				else{
+					this.booms.foreach(function(index){
+						if(!this.dead) {
+							this.moveTo(index);
+						}
+						else if(index === that.booms.length-1){
+							bigbooms[bigbooms.indexOf(that)] = null;
+						}
+					})
+				}
+			});
+			
+			raf(animate);
+		}
 
-        var tree = new Tree(canvas[0], width, height, opts);
-        var seed = tree.seed;
-        var foot = tree.footer;
-        var hold = 1;
+		function drawMoon(){
+			var moon = document.getElementById("moon");
+			var centerX = canvas.width-200 , centerY = 100 , width = 80;
+			if(moon.complete){
+				ctx.drawImage(moon , centerX , centerY , width , width )
+			}
+			else {
+				moon.onload = function(){
+					ctx.drawImage(moon ,centerX , centerY , width , width)
+				}
+			}
+			var index = 0;
+			for(var i=0;i<10;i++){
+				ctx.save();
+				ctx.beginPath();
+				ctx.arc(centerX+width/2 , centerY+width/2 , width/2+index , 0 , 2*Math.PI);
+				ctx.fillStyle="rgba(240,219,120,0.005)";
+				index+=2;
+				ctx.fill();
+				ctx.restore();
+			}
+			
+		}
 
-        canvas.click(function(e) {
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            if (seed.hover(x, y)) {
-                hold = 0; 
-                canvas.unbind("click");
-                canvas.unbind("mousemove");
-                canvas.removeClass('hand');
-            }
-        }).mousemove(function(e){
-            var offset = canvas.offset(), x, y;
-            x = e.pageX - offset.left;
-            y = e.pageY - offset.top;
-            canvas.toggleClass('hand', seed.hover(x, y));
-        });
+		Array.prototype.foreach = function(callback){
+			for(var i=0;i<this.length;i++){
+				if(this[i]!==null) callback.apply(this[i] , [i])
+			}
+		}
 
-        var seedAnimate = eval(Jscex.compile("async", function () {
-            seed.draw();
-            while (hold) {
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canScale()) {
-                seed.scale(0.95);
-                $await(Jscex.Async.sleep(10));
-            }
-            while (seed.canMove()) {
-                seed.move(0, 2);
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-        }));
+		var raf = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (callback) { window.setTimeout(callback, 1000 / 60); };
+ 		
+		canvas.onclick = function(){
+			var x = event.clientX;
+			var y = event.clientY;
+			var bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:x , y:y});
+			bigbooms.push(bigboom)
+		}
 
-        var growAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.grow();
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canGrow());
-        }));
+		// canvas.addEventLisener("touchstart" , function(event){
+		// 	var touch = event.targetTouches[0];
+		// 	var x = event.pageX;
+		// 	var y = event.pageY;
+		// 	var bigboom = new Boom(getRandom(canvas.width/3,canvas.width*2/3) ,2,"#FFF" , {x:x , y:y});
+		// 	bigbooms.push(bigboom)
+		// })
 
-        var flowAnimate = eval(Jscex.compile("async", function () {
-            do {
-    	        tree.flower(2);
-                $await(Jscex.Async.sleep(10));
-            } while (tree.canFlower());
-        }));
+		var Boom = function(x,r,c,boomArea,shape){
+			this.booms = [];
+			this.x = x;
+			this.y = (canvas.height+r);
+			this.r = r;
+			this.c = c;
+			this.shape = shape || false;
+			this.boomArea = boomArea;
+			this.theta = 0;
+			this.dead = false;
+			this.ba = parseInt(getRandom(80 , 200));
+		}
+		Boom.prototype = {
+			_paint:function(){
+				ctx.save();
+				ctx.beginPath();
+				ctx.arc(this.x,this.y,this.r,0,2*Math.PI);
+				ctx.fillStyle = this.c;
+				ctx.fill();
+				ctx.restore();
+			},
+			_move:function(){
+				var dx = this.boomArea.x - this.x , dy = this.boomArea.y - this.y;
+				this.x = this.x+dx*0.01;
+				this.y = this.y+dy*0.01;
 
-        var moveAnimate = eval(Jscex.compile("async", function () {
-            tree.snapshot("p1", 240, 0, 610, 680);
-            while (tree.move("p1", 500, 0)) {
-                foot.draw();
-                $await(Jscex.Async.sleep(10));
-            }
-            foot.draw();
-            tree.snapshot("p2", 500, 0, 610, 680);
+				if(Math.abs(dx)<=this.ba && Math.abs(dy)<=this.ba){
+					if(this.shape){
+						this._shapBoom();
+					}
+					else this._boom();
+					this.dead = true;
+				}
+				else {
+					this._paint();
+				}
+			},
+			_drawLight:function(){
+				ctx.save();
+				ctx.fillStyle = "rgba(255,228,150,0.3)";
+				ctx.beginPath();
+				ctx.arc(this.x , this.y , this.r+3*Math.random()+1 , 0 , 2*Math.PI);
+				ctx.fill();
+				ctx.restore();
+			},
+			_boom:function(){
+				var fragNum = getRandom(30 , 200);
+				var style = getRandom(0,10)>=5? 1 : 2;
+				var color;
+				if(style===1){
+					color = {
+						a:parseInt(getRandom(128,255)),
+						b:parseInt(getRandom(128,255)),
+						c:parseInt(getRandom(128,255))
+					}
+				}
 
-            // 会有闪烁不得意这样做, (＞﹏＜)
-            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
-            canvas.css("background", "#ffe");
-            $await(Jscex.Async.sleep(300));
-            canvas.css("background", "none");
-        }));
+				var fanwei = parseInt(getRandom(300, 400));
+				for(var i=0;i<fragNum;i++){
+					if(style===2){
+						color = {
+							a:parseInt(getRandom(128,255)),
+							b:parseInt(getRandom(128,255)),
+							c:parseInt(getRandom(128,255))
+						}
+					}
+					var a = getRandom(-Math.PI, Math.PI);
+					var x = getRandom(0, fanwei) * Math.cos(a) + this.x;
+					var y = getRandom(0, fanwei) * Math.sin(a) + this.y; 
+					var radius = getRandom(0 , 2)
+					var frag = new Frag(this.x , this.y , radius , color , x , y );
+					this.booms.push(frag);
+				}
+			},
+			_shapBoom:function(){
+				var that = this;
+				putValue(ocas , octx , this.shape , 5, function(dots){
+					var dx = canvas.width/2-that.x;
+					var dy = canvas.height/2-that.y;
+					for(var i=0;i<dots.length;i++){
+						color = {a:dots[i].a,b:dots[i].b,c:dots[i].c}
+						var x = dots[i].x;
+						var y = dots[i].y;
+						var radius = 1;
+						var frag = new Frag(that.x , that.y , radius , color , x-dx , y-dy);
+						that.booms.push(frag);
+					}
+				})
+			}
+		}
 
-        var jumpAnimate = eval(Jscex.compile("async", function () {
-            var ctx = tree.ctx;
-            while (true) {
-                tree.ctx.clearRect(0, 0, width, height);
-                tree.jump();
-                foot.draw();
-                $await(Jscex.Async.sleep(25));
-            }
-        }));
+		function putValue(canvas , context , ele , dr , callback){
+			context.clearRect(0,0,canvas.width,canvas.height);
+			var img = new Image();
+			if(ele.innerHTML.indexOf("img")>=0){
+				img.src = ele.getElementsByTagName("img")[0].src;
+				imgload(img , function(){
+					context.drawImage(img , canvas.width/2 - img.width/2 , canvas.height/2 - img.width/2);
+					dots = getimgData(canvas , context , dr);
+					callback(dots);
+				})
+			}
+			else {
+				var text = ele.innerHTML;
+				context.save();
+				var fontSize =200;
+				context.font = fontSize+"px 宋体 bold";
+				context.textAlign = "center";
+				context.textBaseline = "middle";
+				context.fillStyle = "rgba("+parseInt(getRandom(128,255))+","+parseInt(getRandom(128,255))+","+parseInt(getRandom(128,255))+" , 1)";
+				context.fillText(text , canvas.width/2 , canvas.height/2);
+				context.restore();
+				dots = getimgData(canvas , context , dr);
+				callback(dots);
+			}
+		}
 
-        var textAnimate = eval(Jscex.compile("async", function () {
-		    var together = new Date();
-		    together.setFullYear(2022,05,02); 			//时间年月日
-		    together.setHours(-720);						//小时	
-		    together.setMinutes(0);					//分钟
-		    together.setSeconds(0);					//秒前一位
-		    together.setMilliseconds(2);				//秒第二位
+		function imgload(img , callback){
+			if(img.complete){
+				callback.call(img);
+			}
+			else {
+				img.onload = function(){
+					callback.call(this);
+				}
+			}
+		}
 
-		    $("#code").show().typewriter();
-            $("#clock-box").fadeIn(500);
-            while (true) {
-                timeElapse(together);
-                $await(Jscex.Async.sleep(1000));
-            }
-        }));
+		function getimgData(canvas , context , dr){
+			var imgData = context.getImageData(0,0,canvas.width , canvas.height);
+			context.clearRect(0,0,canvas.width , canvas.height);
+			var dots = [];
+			for(var x=0;x<imgData.width;x+=dr){
+				for(var y=0;y<imgData.height;y+=dr){
+					var i = (y*imgData.width + x)*4;
+					if(imgData.data[i+3] > 128){
+						var dot = {x:x , y:y , a:imgData.data[i] , b:imgData.data[i+1] , c:imgData.data[i+2]};
+						dots.push(dot);
+					}
+				}
+			}
+			return dots;
+		}
 
-        var runAsync = eval(Jscex.compile("async", function () {
-            $await(seedAnimate());
-            $await(growAnimate());
-            $await(flowAnimate());
-            $await(moveAnimate());
+		function getRandom(a , b){
+			return Math.random()*(b-a)+a;
+		}
 
-            textAnimate().start();
 
-            $await(jumpAnimate());
-        }));
+		var maxRadius = 1 , stars=[];
+		function drawBg(){
+			for(var i=0;i<100;i++){
+				var r = Math.random()*maxRadius;
+				var x = Math.random()*canvas.width;
+				var y = Math.random()*2*canvas.height - canvas.height;
+				var star = new Star(x , y , r);
+				stars.push(star);
+				star.paint()
+			}
 
-        runAsync().start();
-    })();
-    </script>
-<div style="display:none"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1256580097'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1256580097%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script></div></body>
+		}
+
+		var Star = function(x,y,r){
+			this.x = x;this.y=y;this.r=r;
+		}
+		Star.prototype = {
+			paint:function(){
+				ctx.save();
+				ctx.beginPath();
+				ctx.arc(this.x , this.y , this.r , 0 , 2*Math.PI);
+				ctx.fillStyle = "rgba(255,255,255,"+this.r+")";
+				ctx.fill();
+				ctx.restore();
+			}
+		}
+
+		var focallength = 250;
+		var Frag = function(centerX , centerY , radius , color ,tx , ty){
+			this.tx = tx;
+			this.ty = ty;
+			this.x = centerX;
+			this.y = centerY;
+			this.dead = false;
+			this.centerX = centerX;
+			this.centerY = centerY;
+			this.radius = radius;
+			this.color = color;
+		}
+
+		Frag.prototype = {
+			paint:function(){
+				ctx.save();
+				ctx.beginPath();
+				ctx.arc(this.x , this.y , this.radius , 0 , 2*Math.PI);
+				ctx.fillStyle = "rgba("+this.color.a+","+this.color.b+","+this.color.c+",1)";
+				ctx.fill()
+				ctx.restore();
+			},
+			moveTo:function(index){
+				this.ty = this.ty+0.3;
+				var dx = this.tx - this.x , dy = this.ty - this.y;
+				this.x = Math.abs(dx)<0.1 ? this.tx : (this.x+dx*0.1);
+				this.y = Math.abs(dy)<0.1 ? this.ty : (this.y+dy*0.1);
+				if(dx===0 && Math.abs(dy)<=80){
+					this.dead = true;
+				}
+				this.paint();
+			}
+		}
+	</script>
+
+</body>
 </html>
